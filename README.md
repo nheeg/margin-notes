@@ -102,12 +102,18 @@ Edit **`src/content/presentation.js`**. Each entry in `sections` is one section,
 
 The current narrative:
 
-1. **Opening** — the Margin headline and the interactive figure (Fig. 1).
-2. **Premise** — "The points don't make the shape."
-3. **Invitation** — "Your turn." and a link panel to the audience page (deliberately no preview of the activity).
-4. **Reflection** — "There was no right answer."
-5. **Closing** — Notice / Try / Keep.
-6. **Last word** — "What will you give shape to?"
+A four-year progression of AI education in an undergraduate business degree:
+
+1. **Opening** — "Learning AI takes four years." with the interactive figure (Fig. 1).
+2. **Premise** — "Not four courses. One thread."
+3. **Framework** — the four competencies: effective, responsible, critical, strategic.
+4. **Four years** — an interactive grid: every competency in every year, one leading each year.
+   Tap a year to focus it.
+5. **Invitation** — "Your turn." and a link panel to the audience page (deliberately no preview).
+6. **Takeaway** — "From using AI to thinking with it."
+
+The four competencies are defined once, in `competencies` at the top of `src/content/presentation.js`,
+and feed both the framework and the grid.
 
 Keep each section to one line and, at most, one short sentence beneath it.
 
@@ -118,7 +124,8 @@ Keep each section to one line and, at most, one short sentence beneath it.
   - `statement` — one large line and an optional short paragraph. `title` can be an array of lines
     (the last is italic, like the opening); `emphasis: true` uses opening-sized type;
     `figure: { label, caption }` adds a still field of points beside it
-  - `points` — a title, optional `body` paragraph, and up to three numbered points
+  - `points` — a title, optional `body` paragraph, and up to four numbered points (each with an optional `tag`)
+  - `progression` — the competencies × years grid; each year has a `label` and the `note` shown when selected
   - `invite` — a link panel to the audience page; optional `steps` preview list and `qr` image
 - **New layout:** create a component in `src/presentation/`, register it in `src/presentation/kinds.js`,
   then use its name as a `kind`. Add `className="reveal"` to elements that should fade in on scroll.

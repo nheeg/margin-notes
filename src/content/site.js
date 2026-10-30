@@ -2,10 +2,10 @@
 
 export const site = {
   name: 'Margin',
-  edition: 'Working notes · Vol. 01',
+  edition: 'A four-year proposal',
   audienceLink: 'Audience view',
 }
 
 export const footer = {
-  note: 'Margin is a work in progress, and intends to stay that way.',
+  note: 'A proposal for AI education in the undergraduate business degree.',
 }

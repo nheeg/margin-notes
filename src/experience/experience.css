@@ -102,7 +102,7 @@
 .option {
   position: relative;
   min-height: 3.5rem;
-  padding: 0.75rem 1rem;
+  padding: 0.75rem 2.25rem 0.75rem 1rem;
   font-family: var(--font-serif);
   font-size: 1.15rem;
   text-align: left;
