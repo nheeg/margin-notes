@@ -1,0 +1,232 @@
+/* Shared by both pages: reset, page frame, header, footer, buttons, motion. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1,
+h2,
+h3,
+p,
+ol,
+figure,
+fieldset {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--accent);
+  color: var(--paper);
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* ---------- Page frame ---------- */
+
+.page {
+  position: relative;
+  max-width: var(--max-width);
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: flex;
+  flex-direction: column;
+}
+
+/* The margin itself: a single faint rule down the left edge on wider screens. */
+@media (min-width: 900px) {
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: calc(var(--gutter) - 1.5rem);
+    width: 1px;
+    background: var(--rule);
+  }
+}
+
+main {
+  flex: 1;
+}
+
+.meta,
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.eyebrow::before {
+  content: '';
+  width: 1.5rem;
+  height: 1px;
+  background: var(--accent);
+}
+
+/* ---------- Header ---------- */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: var(--font-serif);
+  font-size: 1.2rem;
+  letter-spacing: 0.01em;
+}
+
+.wordmark-rule {
+  width: 2px;
+  height: 1.1em;
+  background: var(--accent);
+}
+
+.header-aside {
+  display: flex;
+  align-items: baseline;
+  gap: 1.75rem;
+}
+
+.header-link {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  text-decoration: none;
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 0.1rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.header-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+/* ---------- Buttons ---------- */
+
+.button {
+  font: inherit;
+  font-size: 0.9rem;
+  color: var(--ink);
+  text-decoration: none;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--ink-faint);
+  padding: 0.2rem 0;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.button:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.button-solid {
+  font: inherit;
+  font-size: 1rem;
+  width: 100%;
+  min-height: 3.25rem;
+  padding: 0.75rem 1.25rem;
+  color: var(--paper);
+  background: var(--ink);
+  border: 0;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s, opacity 0.2s;
+}
+
+.button-solid:hover:not(:disabled) {
+  background: var(--accent);
+}
+
+.button-solid:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+/* Registration marks at the corners of a framed element (see Corners.jsx). */
+.corner {
+  position: absolute;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-color: var(--ink-faint);
+  border-style: solid;
+  border-width: 0;
+}
+.corner.tl { top: -0.45rem; left: -0.45rem; border-top-width: 1px; border-left-width: 1px; }
+.corner.tr { top: -0.45rem; right: -0.45rem; border-top-width: 1px; border-right-width: 1px; }
+.corner.bl { bottom: -0.45rem; left: -0.45rem; border-bottom-width: 1px; border-left-width: 1px; }
+.corner.br { bottom: -0.45rem; right: -0.45rem; border-bottom-width: 1px; border-right-width: 1px; }
+
+/* ---------- Footer ---------- */
+
+.footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  padding: 1.75rem 0 2.25rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+/* ---------- Motion preferences ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

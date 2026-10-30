@@ -1,0 +1,34 @@
+/* Design tokens. Change the look of both pages from here.
+   Dark is the default. For the light palette, add data-theme="light" to <html>. */
+
+:root {
+  --paper: #151513;
+  --paper-raised: #1d1d1a;
+  --ink: #ece8de;
+  --ink-soft: #a7a296;
+  --ink-faint: #5f5b52;
+  --rule: #2e2d29;
+  --accent: #e0774f;
+
+  --font-serif: 'Iowan Old Style', 'Palatino Linotype', Palatino, 'Book Antiqua', Charter, Georgia, serif;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: ui-monospace, 'SF Mono', 'Cascadia Mono', Menlo, Consolas, monospace;
+
+  --gutter: clamp(1rem, 4vw, 3rem);
+  --max-width: 76rem;
+  --radius: 2px;
+
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  --paper: #f4f1ea;
+  --paper-raised: #ece8de;
+  --ink: #1d1c19;
+  --ink-soft: #55524a;
+  --ink-faint: #a9a496;
+  --rule: #d8d3c6;
+  --accent: #c4552f;
+
+  color-scheme: light;
+}

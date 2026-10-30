@@ -1,0 +1,162 @@
+/* The audience page (/experience/). Phone first; centred column on larger screens. */
+
+.page--audience {
+  max-width: 34rem;
+  padding-left: max(var(--gutter), env(safe-area-inset-left));
+  padding-right: max(var(--gutter), env(safe-area-inset-right));
+}
+
+/* The left margin rule belongs to the wide presentation layout. */
+.page--audience::before {
+  display: none;
+}
+
+.page--audience .header {
+  padding: 1.1rem 0;
+}
+
+/* Comfortable tap area for the back link without changing how it looks. */
+.page--audience .header-link {
+  padding: 0.6rem 0 0.1rem;
+}
+
+.audience {
+  display: grid;
+  gap: 2.25rem;
+  padding: 2.25rem 0 3rem;
+  align-content: start;
+}
+
+.audience-intro {
+  display: grid;
+  gap: 1rem;
+}
+
+.audience-title {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: clamp(2rem, 8.5vw, 2.75rem);
+  line-height: 1.08;
+  letter-spacing: -0.015em;
+}
+
+.audience-lede {
+  color: var(--ink-soft);
+}
+
+/* ---------- Activity ---------- */
+
+.activity {
+  display: grid;
+  gap: 2rem;
+}
+
+.activity-figure {
+  width: 100%;
+  max-width: 15rem;
+  justify-self: center;
+}
+
+.activity-step {
+  display: grid;
+  gap: 1rem;
+  animation: step-in 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes step-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+}
+
+.activity-prompt {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+
+.activity-prompt:focus {
+  outline: none;
+}
+
+.activity-hint {
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+  margin-top: -0.5rem;
+}
+
+.options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.6rem;
+  margin-top: 0.25rem;
+}
+
+/* An odd last option spans the full row. */
+.options .option:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
+}
+
+.option {
+  position: relative;
+  min-height: 3.5rem;
+  padding: 0.75rem 1rem;
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  text-align: left;
+  color: var(--ink);
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: var(--radius);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.option::after {
+  content: '';
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin-top: -0.25rem;
+  border-radius: 50%;
+  border: 1px solid var(--ink-faint);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.option:hover {
+  border-color: var(--ink-faint);
+}
+
+.option[aria-pressed='true'] {
+  border-color: var(--accent);
+}
+
+.option[aria-pressed='true']::after {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+/* Space is reserved so the button below doesn't jump when feedback appears. */
+.activity-feedback {
+  min-height: 3.2em;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.1rem;
+  line-height: 1.45;
+  color: var(--ink-soft);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.activity-feedback.is-shown {
+  opacity: 1;
+}
+
+.page--audience .footer {
+  font-size: 0.8rem;
+}
